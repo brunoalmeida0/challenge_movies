@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
-import MoviesStore from './../../stores/MoviesStore';
+import MoviesStore from '../../stores/MoviesStore';
 import { inject, observer } from 'mobx-react';
+import Header from './../../components/Header';
+import CardMovie from './../../components/CardMovie';
+import Pagination from './../../components/Pagination';
+import AverageMovie from './../../components/AverageMovie';
+
+import './styles.scss'
 
 const Home = inject("store")(
     observer(
@@ -19,8 +25,13 @@ const Home = inject("store")(
             render() {
                 return (
                     <div>
-                        <h1>Hello World</h1>
-                        <h1>{this.props.store!.listMoviesInfo != null ? this.props.store!.listMoviesInfo.total_pages : "ainda nao rodou"}</h1>
+                        <Header />
+                        <div className="card-list">
+                            <CardMovie />
+                            <CardMovie />
+                            
+                            <Pagination />
+                        </div>
                     </div>
                 );
             }

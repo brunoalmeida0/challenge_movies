@@ -1,7 +1,7 @@
 import { observable, action, decorate } from "mobx";
 import Movie from '../models/Movie';
 import ResponseMoviesList from '../models/ResponseMoviesList';
-import moviesApi from './../services/movies-api';
+import moviesApi from '../services/Movies-api';
 
 export default class MoviesStore {
     api_key = '296678b2602cf4324e7f36893235c561';

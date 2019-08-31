@@ -1,0 +1,16 @@
+@import "../../main.scss";
+
+.average-value {
+    font-family: $primary-font;
+    font-size: 16px;
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+    background-color: $primary-color;
+    border: none;
+    color: $secondary-color;
+    border-radius: 50%;
+    outline: 2px solid $secondary-color;
+    outline-offset: -5px;
+    -moz-outline-radius: 50%;
+  }

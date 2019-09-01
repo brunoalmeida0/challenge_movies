@@ -1,23 +1,38 @@
 import React, { Component } from 'react';
 import AverageMovie from './../AverageMovie';
+import Movie from '../../models/Movie';
+import { inject, observer, Provider } from 'mobx-react';
 
 import './styles.scss'
+import GenreStore from '../../stores/GenreStore';
+import Genre from './../../models/Genre';
+import Genres from './../Genres/index';
+import { Link } from 'react-router-dom';
 
-export default class CardMovie extends Component {
+export default class CardMovie extends Component<{ movie: Movie }> {
+
+    genreStore = new GenreStore();
+
+    constructor(props: { movie: Movie, genreStore?: GenreStore }) {
+        super(props);
+    }
+
     render() {
+        const { poster_path, vote_average, title, overview, genre_ids, id } = this.props.movie;
+
         return (
             <div className="card">
-                <img className="movie-poster" src="https://upload.wikimedia.org/wikipedia/en/thumb/3/3c/Chris_Hemsworth_as_Thor.jpg/220px-Chris_Hemsworth_as_Thor.jpg" alt="Poster do filme" />
+                <Link className="linkToDetails" to={`details/${id}`}><img className="movie-poster" src={`https://image.tmdb.org/t/p/w200${poster_path}`} /></Link>
                 <div className="card-content">
                     <div className="card-header">
                         <div className="movie-vote">
                             <div className="imgtemp">
-                                <AverageMovie />
+                                <AverageMovie voteAverage={vote_average} page='card-movie' />
                             </div>
                         </div>
                         <div className="title-release">
                             <div>
-                                <h1 className="movie-title">Thor: Ragnarok</h1>
+                                <Link className="linkToDetails" to="details"><h1 className="movie-title">{title}</h1></Link>
                             </div>
                             <div className="movie-release-container">
                                 <legend className="movie-release">25/10/2007</legend>
@@ -25,12 +40,13 @@ export default class CardMovie extends Component {
                         </div>
                     </div>
                     <div className="card-body">
-                        <p className="movie-overview">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae quo assumenda unde aut, ex voluptas eveniet, veniam necessitatibus numquam ratione temporibus soluta consequuntur illo quis quae eius, eligendi distinctio similique.</p>
-                        <div className="movie-genres">
-                            <div className="genre">Ação</div>
-                            <div className="genre">Aventura</div>
-                            <div className="genre">Fantasia</div>
-                        </div>
+                        <p className="movie-overview">{overview !== '' ? overview : 'Não há sinopse para este filme.'}</p>
+                        <Provider genreStore={this.genreStore} >
+                            <Genres genreIds={genre_ids} />
+                        </Provider>
+                        {/* <div className="movie-genres">
+                            {genresDisplay}
+                        </div> */}
                     </div>
                 </div>
             </div>

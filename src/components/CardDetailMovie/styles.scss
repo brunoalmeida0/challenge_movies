@@ -49,8 +49,9 @@ $break-large: 1200px;
 
   .card-body {
     background-color: #f2f2f2;
-    padding: 0px 0 40px 40px;
+    padding-left: 40px;
     display: flex;
+    height: 500px;
 
     @media screen and (max-width: $break-small) {
       display: flex;
@@ -65,23 +66,6 @@ $break-large: 1200px;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-
-        .movie-genres {
-          display: flex;
-          justify-content: center;
-
-          .genre {
-            max-height: 20px;
-            margin: 10px 6px 15px 0px;
-            padding: 3px 7px 3px 7px;
-            background-color: #fff;
-            color: $primary-color;
-            font-family: $primary-font;
-            font-size: 13px;
-            border: $primary-color 1px solid;
-            border-radius: 20px;
-          }
-        }
       }
     }
 
@@ -120,7 +104,7 @@ $break-large: 1200px;
     }
 
     .movie-poster {
-      height: 300px;
+      height: 500px;
 
       @media screen and (max-width: $break-small) {
         width: 90%;

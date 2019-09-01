@@ -1,3 +1,5 @@
+import Genre from "./Genre";
+
 export default class Movie {
     popularity: number;
     vote_count: number;
@@ -13,4 +15,9 @@ export default class Movie {
     vote_average: number;
     overview: string;
     release_date: string;
+    budget: number;
+    revenue: number;
+    runtime: number;
+    genres: Genre[];
+    status: string;
 }

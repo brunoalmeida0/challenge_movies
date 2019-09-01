@@ -1,0 +1,19 @@
+@import "../../main.scss";
+
+.movie-genres {
+    display: flex;
+    justify-content: left;
+    margin-top: 20px;
+    height: 60px;
+
+    .genre {
+      margin: 10px 6px 15px 0px;
+      padding: 6px 10px 6px 10px;
+      background-color: #fff;
+      color: $primary-color;
+      font-family: $primary-font;
+      font-size: 16px;
+      border: $primary-color 1px solid;
+      border-radius: 20px;
+    }
+  }

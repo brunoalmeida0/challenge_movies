@@ -3,7 +3,7 @@ import Header from './../../components/Header';
 import CardDetailMovie from './../../components/CardDetailMovie';
 import { Provider } from 'mobx-react';
 import MoviesStore from './../../stores/MoviesStore';
-import { match, RouteComponentProps } from 'react-router';
+import { RouteComponentProps } from 'react-router';
 
 interface IState {
     id: string;

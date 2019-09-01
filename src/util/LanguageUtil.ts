@@ -15,15 +15,10 @@ export default class LanguageUtil {
                 return "Português";
             case 'es':
                 return "Espanhol";
-            case 'fr':
-                return "Inglês";
             case 'zh':
                 return "Mandarin";
-            case 'en':
-                return "Inglês";
             default:
                 return abbreviation;
-                break;
         }
     }
 }

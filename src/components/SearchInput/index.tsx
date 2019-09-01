@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import './styles.scss';
 import { inject, observer } from 'mobx-react';
 import MoviesStore from './../../stores/MoviesStore';
-import { EventEmitter } from 'events';
 import GenreStore from '../../stores/GenreStore';
 
 @inject('moviesStore', 'genresStore')
@@ -17,18 +16,19 @@ export default class SearchInput extends Component<{ moviesStore?: MoviesStore, 
         await genresStore!.getGenres();
         let searchGenre = genresStore!.genres.filter(genre => genre.name.toLowerCase() === search.toLowerCase());
         if (searchGenre.length > 0) {
-            moviesStore!.searchMoviesByGenres(searchGenre[0].id);
+            moviesStore!.searchMoviesByGenres(searchGenre[0].id, 1);
             return true;
         }
         return false;
     }
 
     findYear = (search: string) => {
+        console.log('findYear' + search)
         const { moviesStore } = this.props;
         if (search.match(/\d+/g)) {
             let searchYearNumber = parseInt(search);
             if (searchYearNumber > 999 && searchYearNumber <= 9999) {
-                moviesStore!.searchMoviesByYear(searchYearNumber);
+                moviesStore!.searchMoviesByYear(searchYearNumber, 1);
                 return true;
             }
         }
@@ -37,7 +37,7 @@ export default class SearchInput extends Component<{ moviesStore?: MoviesStore, 
     
     findByName = (search: string) => {
         const { moviesStore } = this.props;
-        moviesStore!.searchMoviesByName(search);
+        moviesStore!.searchMoviesByName(search, 1);
     }
 
     search = async (event: any) => {

@@ -1,11 +1,9 @@
-import React, { Component, Props } from 'react';
-import { RouteProps, match, Router, RouteComponentProps } from 'react-router';
+import React, { Component } from 'react';
 import AverageMovie from '../AverageMovie';
 import MoviesStore from './../../stores/MoviesStore';
 
 import './styles.scss';
 import { inject, observer, Provider } from 'mobx-react';
-import { async } from 'q';
 import Genres from './../Genres/index';
 import GenreStore from './../../stores/GenreStore';
 import LanguageUtil from './../../util/LanguageUtil';
@@ -17,10 +15,6 @@ export default class CardDetailMovie extends Component<{ idMovie: string, movies
 
     genreStore = new GenreStore();
 
-    constructor(props: { idMovie: string, moviesStore?: MoviesStore }) {
-        super(props);
-    }
-
     componentDidMount() {
         this.retrieveMovieById();
     }
@@ -28,8 +22,6 @@ export default class CardDetailMovie extends Component<{ idMovie: string, movies
     retrieveMovieById = async () => {
         await this.props.moviesStore!.retrieveMovieById(this.props.idMovie);
     }
-
-
 
     render() {
         const { movieSelected } = this.props.moviesStore!;

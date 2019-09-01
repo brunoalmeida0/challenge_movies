@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import AverageMovie from './../AverageMovie';
 import Movie from '../../models/Movie';
-import { inject, observer, Provider } from 'mobx-react';
+import { Provider } from 'mobx-react';
 
 import './styles.scss'
 import GenreStore from '../../stores/GenreStore';
-import Genre from './../../models/Genre';
 import Genres from './../Genres/index';
 import { Link } from 'react-router-dom';
 
@@ -13,16 +12,12 @@ export default class CardMovie extends Component<{ movie: Movie }> {
 
     genreStore = new GenreStore();
 
-    constructor(props: { movie: Movie, genreStore?: GenreStore }) {
-        super(props);
-    }
-
     render() {
-        const { poster_path, vote_average, title, overview, genre_ids, id } = this.props.movie;
+        const { poster_path, vote_average, title, overview, genre_ids, id, release_date } = this.props.movie;
 
         return (
             <div className="card">
-                <Link className="linkToDetails" to={`details/${id}`}><img className="movie-poster" src={`https://image.tmdb.org/t/p/w200${poster_path}`} /></Link>
+                <Link className="linkToDetails" to={`details/${id}`}><img className="movie-poster" alt="Poster do filme" src={`https://image.tmdb.org/t/p/w200${poster_path}`} /></Link>
                 <div className="card-content">
                     <div className="card-header">
                         <div className="movie-vote">
@@ -35,7 +30,7 @@ export default class CardMovie extends Component<{ movie: Movie }> {
                                 <Link className="linkToDetails" to="details"><h1 className="movie-title">{title}</h1></Link>
                             </div>
                             <div className="movie-release-container">
-                                <legend className="movie-release">25/10/2007</legend>
+                                <legend className="movie-release">{release_date.split('-').reverse().join('/')}</legend>
                             </div>
                         </div>
                     </div>
@@ -44,9 +39,6 @@ export default class CardMovie extends Component<{ movie: Movie }> {
                         <Provider genreStore={this.genreStore} >
                             <Genres genreIds={genre_ids} />
                         </Provider>
-                        {/* <div className="movie-genres">
-                            {genresDisplay}
-                        </div> */}
                     </div>
                 </div>
             </div>

@@ -5,7 +5,7 @@ import { Provider } from 'mobx-react';
 
 import './styles.scss'
 import GenreStore from '../../stores/GenreStore';
-import Genres from './../Genres/index';
+import Genres from './../Genres';
 import { Link } from 'react-router-dom';
 
 interface IProps {

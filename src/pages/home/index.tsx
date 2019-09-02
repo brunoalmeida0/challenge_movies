@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import MoviesStore from '../../stores/MoviesStore';
 import { Provider } from 'mobx-react';
-import Header from './../../components/Header';
-import Pagination from './../../components/Pagination';
-import CardList from './../../components/CardList/index';
-import SearchInput from './../../components/SearchInput/index';
+import Header from '../../components/Header';
+import Pagination from '../../components/Pagination';
+import CardList from '../../components/CardList';
+import SearchInput from '../../components/SearchInput';
 
 import './styles.scss'
 import GenreStore from '../../stores/GenreStore';

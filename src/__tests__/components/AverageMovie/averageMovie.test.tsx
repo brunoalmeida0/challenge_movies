@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow  } from 'enzyme';
-import AverageMovie from './../../../components/AverageMovie/index';
+import AverageMovie from './../../../components/AverageMovie';
 
 describe('AverageMovieComponent', () => {
     it('Deve criar o AverageMovieComponent sem erros', () => {

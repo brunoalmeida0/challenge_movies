@@ -4,7 +4,7 @@ import MoviesStore from './../../stores/MoviesStore';
 
 import './styles.scss';
 import { inject, observer, Provider } from 'mobx-react';
-import Genres from './../Genres/index';
+import Genres from './../Genres';
 import GenreStore from './../../stores/GenreStore';
 import LanguageUtil from './../../util/LanguageUtil';
 import StatusUtil from './../../util/StatusUtil';

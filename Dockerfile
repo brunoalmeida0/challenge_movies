@@ -1,10 +1,7 @@
-FROM mhart/alpine-node:11 AS builder
+FROM node:12.2.0-alpine
 WORKDIR /app
-COPY . .
-RUN npm run build
-
-FROM mhart/alpine-node
-RUN npm -g i serve
-WORKDIR /app
-COPY --from=builder /app/build .
-CMD ["serve", "-p", "80", "-s", "."]
+ENV PATH /app/node_modules/.bin:$PATH
+COPY package.json /app/package.json
+RUN npm install --silent
+RUN npm install react-scripts@3.0.1 -g --silent
+CMD ["npm", "start"]

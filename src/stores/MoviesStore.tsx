@@ -2,7 +2,6 @@ import { observable, action, computed, runInAction } from "mobx";
 import Movie from '../models/Movie';
 import ResponseMoviesList from '../models/ResponseMoviesList';
 import MovieApi from '../services/MovieApi';
-import Trailer from "../models/Trailer";
 import ResponseTrailer from "../models/ResponseTrailer";
 
 export default class MoviesStore {

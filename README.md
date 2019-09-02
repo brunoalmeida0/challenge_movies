@@ -34,6 +34,9 @@ Executar os testes:
 `npm run test`
 
 ## Docker
+
+A feature da inclusão do Dockerfile está incompleta, criei a branch "docker" para salvar o andamento, o projeto executará normalmente mas não fará requisições à API externa.
+
 Para executar a aplicação através do Docker
 (Testado em ambiente Windows):
 
@@ -44,4 +47,3 @@ Em seguida, execute o seguinte comando substituindo "caminho" pelo path que est�
 `docker run -v %cd%:caminho -v /app/node_modules -p 3001:3000 --rm sample:dev`
 
 Após a execução, acessar http://localhost:3001/
-

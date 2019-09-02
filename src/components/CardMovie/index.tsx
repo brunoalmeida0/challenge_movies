@@ -8,8 +8,11 @@ import GenreStore from '../../stores/GenreStore';
 import Genres from './../Genres/index';
 import { Link } from 'react-router-dom';
 
-export default class CardMovie extends Component<{ movie: Movie }> {
+interface IProps {
+    movie: Movie
+}
 
+export default class CardMovie extends Component<IProps> {
     genreStore = new GenreStore();
 
     render() {

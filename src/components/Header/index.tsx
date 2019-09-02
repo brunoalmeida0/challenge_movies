@@ -1,9 +1,10 @@
 import React from 'react';
 import './styles.scss';
+import { Link } from 'react-router-dom';
 
 //StatelessComponent
-const Header = () => ( //Como esta função só terá um return, usar () deixa isso implícito ao invés de fazer com {} e explicitar o retorno
-    <header className="app-header">Movies</header>
-);
+const Header = () => {
+    return <header className="app-header"><Link className="home" to={'/'}>Movies</Link></header>
+}
 
 export default Header;

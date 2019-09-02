@@ -17,6 +17,10 @@ export default class LanguageUtil {
                 return "Espanhol";
             case 'zh':
                 return "Mandarin";
+            case 'hi':
+                return "Hindi";
+            case null || undefined:
+                return '-';
             default:
                 return abbreviation;
         }

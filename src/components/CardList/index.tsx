@@ -6,9 +6,13 @@ import { inject, observer, Provider } from 'mobx-react';
 import MoviesStore from './../../stores/MoviesStore';
 import GenreStore from '../../stores/GenreStore';
 
+interface IProps {
+    moviesStore?: MoviesStore
+}
+
 @inject('moviesStore')
 @observer
-export default class CardList extends Component<{ moviesStore?: MoviesStore }> {
+export default class CardList extends Component<IProps> {
     genreStore = new GenreStore();
 
     componentDidMount() {
@@ -24,7 +28,7 @@ export default class CardList extends Component<{ moviesStore?: MoviesStore }> {
             <div className="card-list">
                 {
                     this.props.moviesStore!.listMoviesDisplay != null ?
-                    this.props.moviesStore!.listMoviesDisplay.map(movie => (
+                        this.props.moviesStore!.listMoviesDisplay.map(movie => (
                             <Provider key={movie.id} genreStore={this.genreStore}>
                                 <CardMovie movie={movie} />
                             </Provider>

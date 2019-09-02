@@ -3,6 +3,8 @@ export default class StatusUtil {
         switch (abbreviation.toLowerCase()) {
             case 'released':
                 return "Lançado";
+            case null || undefined:
+                return '-'
             default:
                 break;
         }

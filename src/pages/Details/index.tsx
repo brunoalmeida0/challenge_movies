@@ -5,11 +5,11 @@ import { Provider } from 'mobx-react';
 import MoviesStore from './../../stores/MoviesStore';
 import { RouteComponentProps } from 'react-router';
 
-interface IState {
+interface IProps {
     id: string;
   }
 
-export default class Details extends Component<RouteComponentProps<IState>> {
+export default class Details extends Component<RouteComponentProps<IProps>> {
     moviesStore = new MoviesStore();
 
     render() {

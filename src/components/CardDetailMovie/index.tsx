@@ -9,31 +9,47 @@ import GenreStore from './../../stores/GenreStore';
 import LanguageUtil from './../../util/LanguageUtil';
 import StatusUtil from './../../util/StatusUtil';
 
+interface IProps {
+    idMovie: string,
+    moviesStore?: MoviesStore
+}
+
 @inject('moviesStore')
 @observer
-export default class CardDetailMovie extends Component<{ idMovie: string, moviesStore?: MoviesStore }>{
+export default class CardDetailMovie extends Component<IProps>{
 
     genreStore = new GenreStore();
 
     componentDidMount() {
         this.retrieveMovieById();
+        this.getTrailers();
     }
-
+    
     retrieveMovieById = async () => {
         await this.props.moviesStore!.retrieveMovieById(this.props.idMovie);
     }
 
-    render() {
-        const { movieSelected } = this.props.moviesStore!;
+    getTrailers = async () => {
+        await this.props.moviesStore!.getTrailerByMovieId(this.props.idMovie);
+    }
 
-        if (movieSelected !== undefined) {
-            const { title, overview, poster_path, revenue, budget, vote_average, genres, original_language, status } = movieSelected;
+    render() {
+        const { moviesStore } = this.props;
+
+        if (moviesStore!.movieSelected !== undefined) {
+            const { title, overview, poster_path, revenue, budget, vote_average, genres, original_language, status } = moviesStore!.movieSelected;
+            let trailers:  JSX.Element[] = []
+            if (moviesStore!.trailers !== undefined) {
+                trailers = moviesStore!.trailers.results.map(trailer => {
+                    return <iframe title="trailer" className="trailer" src={`https://www.youtube.com/embed/${trailer.key}`}></iframe>
+                })
+            }
 
             return (
                 <div className="card-details">
                     <div className="card-header">
                         <h1 className="title movie-title">{title}</h1>
-                        <p className="date">{this.props.moviesStore!.formatReleaseDate}</p>
+                        <p className="date">{moviesStore!.formatReleaseDate}</p>
                     </div>
                     <div className="card-body">
                         <div className="content">
@@ -84,8 +100,7 @@ export default class CardDetailMovie extends Component<{ idMovie: string, movies
                             <img className="movie-poster" src={`https://image.tmdb.org/t/p/w500${poster_path}`} alt="Poster do filme" />
                         </div>
                     </div>
-                    {/* <iframe title="trailer" className="trailer" src="https://youtu.be/r5X-hFf6Bwo"></iframe> */}
-              
+                    {trailers}
                 </div >
 
             )

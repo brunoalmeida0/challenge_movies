@@ -1,28 +1,28 @@
 @import "../../main.scss";
 
+$break-small: 414px;
 .average-value {
     font-family: $primary-font;
     font-size: 16px;
     margin: 10px;
     background-color: $primary-color;
-    border: none;
     color: $secondary-color;
-    border-radius: 50%;
-    outline: 2px solid $secondary-color;
-    outline-offset: -5px;
-    -moz-outline-radius: 50%;
-    // outline-radius: 50%;
+    border-radius: 50%;    
+    border: 3px solid $secondary-color;
+    padding: 5px;
+    box-shadow: 0 0 0 3px $primary-color;
   }
 
   .details {
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     font-size: 30px;
-    outline: 5px solid $secondary-color;
-    outline-offset: -10px;
   }
 
   .card-movie {
     width: 50px;
     height: 50px;
+    @media screen and (max-width: $break-small) {
+      margin-top: 50px;
+    }
   }

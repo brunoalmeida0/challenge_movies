@@ -11,18 +11,8 @@ import GenreStore from '../../stores/GenreStore';
 
 class Home extends Component {
 
-
     moviesStore = new MoviesStore();
     genresStore = new GenreStore();
-    // constructor(props: { store?: MoviesStore }) {
-    //     super(props);
-    // }
-
-    // componentDidMount() {
-    //     this.props.store!.getTopRatedMoviesList();
-    //     // this.movieStore.retrieveMovieById(19404);
-    //     // this.movieStore.searchMoviesByName('Vingadores');
-    // }
 
     render() {
         return (

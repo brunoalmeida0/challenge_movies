@@ -1,16 +1,23 @@
 @import "../../main.scss";
 
+$break-small: 414px;
+
 .search-input {
-    width: 78%;
-    height: 30px;
-    border-radius: 20px;
-    background-color: #ebebeb;
-    border: 0 none;
-    font-size: 20px;
-    color: #87acc3;
-    padding: 10px 0px 10px 30px;
+  width: 78%;
+  height: 30px;
+  border-radius: 20px;
+  background-color: #ebebeb;
+  border: 0 none;
+  font-size: 20px;
+  color: #87acc3;
+  padding: 10px 0px 10px 30px;
+
+  @media screen and (max-width: $break-small) {
+    font-size: 12px;   
+  }
+
 }
 
 ::placeholder {
-    color: #87acc3;
-  }
+  color: #87acc3;
+}

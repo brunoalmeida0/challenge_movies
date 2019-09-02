@@ -32,3 +32,16 @@ Ao acessar a rota da aplicação após a execução do comando acima, é possív
 Executar os testes: 
 
 `npm run test`
+
+## Docker
+Para executar a aplicação através do Docker
+(Testado em ambiente Windows):
+
+`docker build -t sample:dev .`
+
+Em seguida, execute o seguinte comando substituindo "caminho" pelo path que está localizado o projeto (ex: \Usuario\bruno.almeida\challenge_movies):
+
+`docker run -v %cd%:caminho -v /app/node_modules -p 3001:3000 --rm sample:dev`
+
+Após a execução, acessar http://localhost:3001/
+
